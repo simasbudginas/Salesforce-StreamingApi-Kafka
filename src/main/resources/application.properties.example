@@ -1,4 +1,5 @@
 sfdc.username=alex@woolford.io
 sfdc.password=password+token
+sfdc.topic=/topic/OpportunityUpdates
 
-kafka.broker.address=cp01.woolford.io:9092
+kafka.broker.address=localhost:9092

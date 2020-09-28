@@ -32,6 +32,9 @@ public class EventTransport {
     @Value("${sfdc.password}")
     private String sfdcPassword;
 
+    @Value("${sfdc.topic}")
+    private String sfdcTopic;
+
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
@@ -52,13 +55,15 @@ public class EventTransport {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        // define consoumer
+        // define consumer
         Consumer<Map<String, Object>> consumer = (event) -> {
             String eventJSON;
             try {
                 eventJSON = objectMapper.writeValueAsString(event);
+                Integer key = Integer.parseInt((String) ((Map<String, Object>) event.get("sobject")).get("External__c"));
                 logger.info("eventJSON: " + eventJSON);
-                kafkaTemplate.send("contact-updates", eventJSON);
+                logger.info("Key: " + key);
+                kafkaTemplate.send("salesforce_events", key, eventJSON);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
@@ -69,8 +74,7 @@ public class EventTransport {
         connector.start().get(5, TimeUnit.SECONDS);
 
         // subscribe to events; process events with consumer
-        TopicSubscription subscription = connector.subscribe("/topic/ContactUpdates",
-                replayFrom, consumer).get(5, TimeUnit.SECONDS);
+        TopicSubscription subscription = connector.subscribe(sfdcTopic, replayFrom, consumer).get(5, TimeUnit.SECONDS);
 
         logger.info("Subscribed to " + subscription);
 

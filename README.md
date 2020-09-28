@@ -7,7 +7,7 @@ First, it's necessary to create a topic based on an SOQL query. To do that, twea
     PushTopic pushTopic = new PushTopic();
     pushTopic.Name = 'ContactUpdates';
     pushTopic.Query = 'SELECT id, firstname, lastname, accountid, email FROM contact';
-    pushTopic.ApiVersion = 39.0;
+    pushTopic.ApiVersion = 49.0;
     pushTopic.NotifyForOperationCreate = true;
     pushTopic.NotifyForOperationUpdate = true;
     pushTopic.NotifyForOperationUndelete = true;
@@ -33,5 +33,3 @@ Build and run the project:
 That's it! Changes to contacts will be published, in JSON format, to the 'contact-updates' Kafka topic.
 
 [![Publish updates from SFDC to Kafka](https://img.youtube.com/vi/UKwUOlF5GFM/0.jpg)](https://www.youtube.com/watch?v=UKwUOlF5GFM)
-
-
