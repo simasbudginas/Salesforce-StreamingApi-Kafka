@@ -35,6 +35,9 @@ public class EventTransport {
     @Value("${sfdc.topic}")
     private String sfdcTopic;
 
+    @Value("${kafka.topic}")
+    private String kafkaTopic;
+
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
@@ -60,10 +63,8 @@ public class EventTransport {
             String eventJSON;
             try {
                 eventJSON = objectMapper.writeValueAsString(event);
-                Integer key = Integer.parseInt((String) ((Map<String, Object>) event.get("sobject")).get("External__c"));
                 logger.info("eventJSON: " + eventJSON);
-                logger.info("Key: " + key);
-                kafkaTemplate.send("salesforce_events", key, eventJSON);
+                kafkaTemplate.send(kafkaTopic, eventJSON);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }

@@ -1,5 +1,6 @@
-sfdc.username=alex@woolford.io
+sfdc.username=salesforce_api@hometogo.com
 sfdc.password=password+token
-sfdc.topic=/topic/OpportunityUpdates
+sfdc.topic=${stopic:/topic/OpportunityUpdates}
 
 kafka.broker.address=localhost:9092
+kafka.topic=${ktopic:opportunity_updates}
