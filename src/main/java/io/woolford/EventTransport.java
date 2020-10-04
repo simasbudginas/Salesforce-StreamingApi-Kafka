@@ -38,13 +38,14 @@ public class EventTransport {
     @Value("${kafka.topic}")
     private String kafkaTopic;
 
+    @Value("${sfdc.replay}")
+    private long sfdcReplayId;
+
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
     @PostConstruct
     private void transportEvents() throws Exception {
-
-        long replayFrom = EmpConnector.REPLAY_FROM_EARLIEST;
 
         // login
         BayeuxParameters params;
@@ -75,7 +76,7 @@ public class EventTransport {
         connector.start().get(5, TimeUnit.SECONDS);
 
         // subscribe to events; process events with consumer
-        TopicSubscription subscription = connector.subscribe(sfdcTopic, replayFrom, consumer).get(5, TimeUnit.SECONDS);
+        TopicSubscription subscription = connector.subscribe(sfdcTopic, sfdcReplayId, consumer).get(5, TimeUnit.SECONDS);
 
         logger.info("Subscribed to " + subscription);
 

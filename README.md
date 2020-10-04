@@ -27,8 +27,9 @@ For more information visit: https://developer.salesforce.com/docs/atlas.en-us.ap
 ### Update credential details
 Then edit the properties file (`src/main/java/io/woolford/resources/application.properties`) - add your own SFDC login, and Kafka broker.
 
-The `sfdc.password` property is the concatenation of the password *and* the SFDC security token.
-
+* `sfdc.password` - the concatenation of the password *and* the SFDC security token.
+* `sfdc.replay` - the position in the stream from which you want to receive event messages.
+If not specified, EMP Connector fetches events starting from the earliest retained event message (-2 option).
 
 ### Dependencies
 This project depends on the `emp-connector` artifact from `com.salesforce.conduit`.
@@ -42,6 +43,6 @@ This dependency doesn't exist in Maven Central. You could install it locally:
 ### Build and run the project
 
     mvn clean package
-    nohup java -jar target/sfdc-streaming-1.0-SNAPSHOT.jar &
+    nohup java -jar target/sfdc-streaming-1.0-SNAPSHOT.jar --stopic=/topic/BookingStatusUpdates --ktopic=salesforce_events --replay=-2 &
 
 That's it! Changes to contacts will be published, in JSON format, to the 'contact-updates' Kafka topic.

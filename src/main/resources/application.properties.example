@@ -1,6 +1,7 @@
 sfdc.username=salesforce_api@hometogo.com
 sfdc.password=password+token
 sfdc.topic=${stopic:/topic/OpportunityUpdates}
+sfdc.replay=${replay:-2}
 
 kafka.broker.address=localhost:9092
-kafka.topic=${ktopic:opportunity_updates}
+kafka.topic=${ktopic:salesforce_booking_statuses}
