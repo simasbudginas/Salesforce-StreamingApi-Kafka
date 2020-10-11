@@ -43,6 +43,6 @@ This dependency doesn't exist in Maven Central. You could install it locally:
 ### Build and run the project
 
     mvn clean package
-    nohup java -jar target/sfdc-streaming-1.0-SNAPSHOT.jar --stopic=/topic/BookingStatusUpdates --ktopic=salesforce_events --replay=-2 &
+    nohup java -jar target/sfdc-streaming-1.1.jar --stopic=/topic/BookingStatusUpdates --ktopic=salesforce_events --replay=-2 &
 
 That's it! Changes to contacts will be published, in JSON format, to the 'contact-updates' Kafka topic.
