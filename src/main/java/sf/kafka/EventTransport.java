@@ -1,4 +1,4 @@
-package io.woolford;
+package sf.kafka;
 
 import static com.salesforce.emp.connector.LoginHelper.login;
 
