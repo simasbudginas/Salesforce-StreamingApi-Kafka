@@ -56,3 +56,17 @@ That's it! Changes to contacts will be published, in JSON format, to the 'contac
 ### Run container
 
     docker run -p 9000:9000 kafka/salesforce --stopic=/topic/BookingStatusUpdates --ktopic=salesforce_booking_status --replay=-2
+
+## Deployment
+
+### Log in from Docker client
+
+    docker login harbor.hometogo.rocks
+
+## Tag an image for this project:
+
+    docker tag kafka/salesforce harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.0
+    
+## Push an image to this project:
+
+    docker push harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.0
