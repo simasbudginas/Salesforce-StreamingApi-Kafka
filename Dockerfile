@@ -23,8 +23,10 @@ RUN cd /tmp && mkdir Producer
 
 # Build the project
 WORKDIR /tmp/Producer
-COPY . /tmp/Producer
-RUN mvn clean package
+COPY ./pom.xml /tmp/Producer
+COPY ./src /tmp/Producer/src
+RUN mv src/main/resources/application.properties.live src/main/resources/application.properties \
+    && mvn clean package
 
 # Runtime Container Image.
 FROM openjdk:8-jdk-alpine AS build

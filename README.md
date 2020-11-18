@@ -59,14 +59,28 @@ That's it! Changes to contacts will be published, in JSON format, to the 'contac
 
 ## Deployment
 
-### Log in from Docker client
+### Harbor
+
+#### Log in from Docker client
 
     docker login harbor.hometogo.rocks
 
-## Tag an image for this project:
+#### Tag an image for this project:
 
     docker tag kafka/salesforce harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.0
     
-## Push an image to this project:
+#### Push an image to this project:
 
     docker push harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.0
+
+### Kubernetes
+
+#### Useful commands
+
+    kubectl apply -f <path to yaml> -n salesforce
+    kubectl delete -f <path to yaml> -n salesforce
+    kubectl get pods -n salesforce
+    kubectl describe pod <pod name> -n salesforce
+    kubectl logs <pod name> -n salesforce -f --tail 100
+    kubectl get deployments -n salesforce
+    kubectl scale deployment <deployment name> -n salesforce --replicas=x (better practive to change yml)

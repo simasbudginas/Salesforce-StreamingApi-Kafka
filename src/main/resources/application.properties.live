@@ -1,0 +1,7 @@
+sfdc.username=salesforce_api@hometogo.com
+sfdc.password=asDhuHBawPVdstcwJxfhkWTuqnGNscrt3vIutf8JQxvoAbcG0VPm1lTd32
+sfdc.topic=${stopic:/topic/BookingStatusUpdates}
+sfdc.replay=${replay:-2}
+
+kafka.broker.address=10.10.100.11:32000
+kafka.topic=${ktopic:salesforce_booking_status}

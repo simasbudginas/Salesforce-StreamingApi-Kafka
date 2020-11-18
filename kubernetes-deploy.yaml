@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sf-producer
+  labels:
+    app: sf-producer
+  namespace: salesforce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sf-producer
+  template:
+    metadata:
+      labels:
+        app: sf-producer
+    spec:
+      nodeSelector:
+        dedicated_2: salesforce
+      containers:
+        - name: customer-producer
+          image: harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.1
+          args: ["--stopic=/topic/CustomerUpdates" ,"--ktopic=salesforce_customer", "--replay=-1"]
