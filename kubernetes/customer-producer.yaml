@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sf-producer
+  name: customer-producer
   labels:
-    app: sf-producer
+    app: customer-producer
   namespace: salesforce
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sf-producer
+      app: customer-producer
   template:
     metadata:
       labels:
-        app: sf-producer
+        app: customer-producer
     spec:
       nodeSelector:
         dedicated_2: salesforce
