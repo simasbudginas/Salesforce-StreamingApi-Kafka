@@ -19,5 +19,5 @@ spec:
         dedicated_2: salesforce
       containers:
         - name: customer-producer
-          image: harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.1
+          image: harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.3
           args: ["--stopic=/topic/CustomerUpdates" ,"--ktopic=salesforce_customer", "--replay=-1"]
