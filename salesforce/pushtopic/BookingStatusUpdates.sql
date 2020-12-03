@@ -7,3 +7,4 @@ SELECT Id,
        LastModifiedDate
 FROM Booking__c
 WHERE (LastModifiedById != '0052p000009Ka2zAAC' AND LastModifiedById != '0052p000009GcLbAAK')
+  AND salesforceBookingStatus__c != null
