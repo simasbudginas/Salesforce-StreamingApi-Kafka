@@ -86,3 +86,4 @@ That's it! Changes to contacts will be published, in JSON format, to the 'contac
     kubectl scale deployment <deployment name> -n salesforce --replicas=x (better practive to change yml)
     kubectl delete deployment <deployment name> -n salesforce
     kubectl -n salesforce rollout restart deployment <deployment name>
+    kubectl exec -it <pod name> -n salesforce -- /bin/sh

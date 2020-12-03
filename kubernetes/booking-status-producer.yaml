@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-status-producer
+  labels:
+    app: booking-status-producer
+  namespace: salesforce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: booking-status-producer
+  template:
+    metadata:
+      labels:
+        app: booking-status-producer
+    spec:
+      nodeSelector:
+        dedicated_2: salesforce
+      containers:
+        - name: booking-status-producer
+          image: harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.3
+          args: ["--stopic=/topic/BookingStatusUpdates" ,"--ktopic=salesforce_booking_status", "--replay=-1"]
