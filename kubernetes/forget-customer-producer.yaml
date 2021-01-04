@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forget-customer-producer
+  labels:
+    app: forget-customer-producer
+  namespace: salesforce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forget-customer-producer
+  template:
+    metadata:
+      labels:
+        app: forget-customer-producer
+    spec:
+      nodeSelector:
+        dedicated_2: salesforce
+      containers:
+        - name: forget-customer-producer
+          image: harbor.hometogo.rocks/salesforce_kafka_producer/connector:1.3
+          args: ["--stopic=/topic/ForgetCustomer" ,"--ktopic=salesforce_forget_customer", "--replay=-2"]
