@@ -87,3 +87,7 @@ That's it! Changes to contacts will be published, in JSON format, to the 'contac
     kubectl delete deployment <deployment name> -n salesforce
     kubectl -n salesforce rollout restart deployment <deployment name>
     kubectl exec -it <pod name> -n salesforce -- /bin/sh
+
+#### Tips
+
+    kubectl get pod -n salesforce | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n salesforce
