@@ -1,0 +1,11 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.Name = 'BookingStatusUpdates';
+pushTopic.Description = 'Booking status updates submitted by Customer Support agent';
+pushTopic.ApiVersion = 49.0;
+pushTopic.isActive = true;
+pushTopic.NotifyForOperationCreate = false;
+pushTopic.NotifyForOperationUpdate = true;
+pushTopic.NotifyForOperationUndelete = false;
+pushTopic.NotifyForOperationDelete = false;
+pushTopic.NotifyForFields = 'Select';
+insert pushTopic;

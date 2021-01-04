@@ -1,4 +1,3 @@
-# BookingStatusUpdates
 SELECT Id,
        bookingId__c,
        salesforceBookingStatus__c,

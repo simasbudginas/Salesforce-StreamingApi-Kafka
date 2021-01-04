@@ -1,0 +1,11 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.Name = 'ForgetCustomer';
+pushTopic.Description = 'Registers forget customer action for data depersonalisation';
+pushTopic.ApiVersion = 49.0;
+pushTopic.isActive = true;
+pushTopic.NotifyForOperationCreate = false;
+pushTopic.NotifyForOperationUpdate = true;
+pushTopic.NotifyForOperationUndelete = false;
+pushTopic.NotifyForOperationDelete = false;
+pushTopic.NotifyForFields = 'Where';
+insert pushTopic;

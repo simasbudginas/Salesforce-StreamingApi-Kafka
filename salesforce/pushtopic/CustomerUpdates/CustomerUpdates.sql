@@ -1,4 +1,3 @@
-# CustomerUpdates
 SELECT Id,
        ExternalId__c,
        FirstName,

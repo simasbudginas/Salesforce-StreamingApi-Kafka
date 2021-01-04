@@ -1,0 +1,11 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.Name = 'CustomerUpdates';
+pushTopic.Description = 'Customer updates by Customer Support';
+pushTopic.ApiVersion = 49.0;
+pushTopic.isActive = true;
+pushTopic.NotifyForOperationCreate = true;
+pushTopic.NotifyForOperationUpdate = true;
+pushTopic.NotifyForOperationUndelete = false;
+pushTopic.NotifyForOperationDelete = false;
+pushTopic.NotifyForFields = 'Select';
+insert pushTopic;
