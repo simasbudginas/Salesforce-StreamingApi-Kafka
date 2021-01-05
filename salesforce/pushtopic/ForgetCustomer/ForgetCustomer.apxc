@@ -7,5 +7,5 @@ pushTopic.NotifyForOperationCreate = false;
 pushTopic.NotifyForOperationUpdate = true;
 pushTopic.NotifyForOperationUndelete = false;
 pushTopic.NotifyForOperationDelete = false;
-pushTopic.NotifyForFields = 'Where';
+pushTopic.NotifyForFields = 'Select';
 insert pushTopic;
